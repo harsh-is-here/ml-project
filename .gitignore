@@ -1,0 +1,13 @@
+.DS_Store
+
+# Python-generated files
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter-generated checkpoints
+.ipynb_checkpoints/
