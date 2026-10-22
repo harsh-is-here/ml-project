@@ -1,14 +1,23 @@
-import streamlit as st
+import os
 import pickle
 import requests
 
+import streamlit as st
+
+
+TMDB_API_KEY = os.getenv('TMDB_API_KEY')
+
 
 def fetch_poster(movie_id):
+    if not TMDB_API_KEY:
+        st.warning('TMDB_API_KEY is not configured; posters are unavailable.')
+        return None
+
     try:
         response = requests.get(
             f'https://api.themoviedb.org/3/movie/{movie_id}',
             params={
-                'api_key': '5bbed2df17047c6f8fc00c70be5c8a00',
+                'api_key': TMDB_API_KEY,
                 'language': 'en-US',
             },
             timeout=10,
